@@ -3,6 +3,12 @@ import FullLogo from "@/components/FullLogo";
 import PassKeyModal from "@/components/PassKeyModal";
 import Link from "next/link";
 import { getMetadata } from "./layout";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 export const metadata = getMetadata("Home");
 
@@ -24,7 +30,14 @@ const Home = ({ searchParams }: SearchParamProps) => {
             </p>
 
             <Link href="/?admin=true" className="text-green-500">
-              Admin
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger>Admin</TooltipTrigger>
+                  <TooltipContent className="m-1 text-lg bg-dark-500">
+                    <p>Passcode: 123456</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
             </Link>
           </div>
         </div>
